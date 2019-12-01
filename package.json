@@ -1,0 +1,27 @@
+{
+  "name": "aoc2019",
+  "version": "1.0.0",
+  "description": "Advent of Code 2019 Solutions",
+  "main": "day1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackcutting/aoc2019.git"
+  },
+  "keywords": [
+    "aoc",
+    "advent",
+    "of",
+    "code",
+    "2019",
+    "nodejs"
+  ],
+  "author": "Jack Cutting",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackcutting/aoc2019/issues"
+  },
+  "homepage": "https://github.com/jackcutting/aoc2019#readme"
+}

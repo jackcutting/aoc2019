@@ -2,12 +2,21 @@ const puzzleInput = [51753, 53456, 128133, 118219, 136490, 113318, 134001, 99775
 
 let fuelRequired = 0;
 
-const calculateInput = (mass) => {
-  return Math.floor((mass / 3)) - 2;
+const calculateFuel = (mass) => {
+  let fuel = Math.floor((mass / 3)) - 2;
+
+  if (fuel > 0) {
+    const additionalFuel = calculateFuel(fuel);
+    if (additionalFuel > 0) {
+      fuel = fuel + additionalFuel;
+    }
+  }
+
+  return fuel;
 };
 
 for (mass of puzzleInput) {
-  fuelRequired += calculateInput(mass);
+  fuelRequired = fuelRequired + calculateFuel(mass);
 }
 
 console.info(fuelRequired);

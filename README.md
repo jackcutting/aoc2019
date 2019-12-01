@@ -1,7 +1,7 @@
 # Advent of Code 2019
 ## Solutions
 
-[Advent of Code]() is an annual event which takes place in the run up to Christmas. A new challenge is released each day with 2 parts to solve.
+[Advent of Code](https://adventofcode.com/2019) is an annual event which takes place in the run up to Christmas. A new challenge is released each day with 2 parts to solve.
 
 ### How to run
 

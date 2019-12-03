@@ -24,15 +24,15 @@ const run = (noun, verb) => {
 
     switch (op) {
       case '1':
-      memory[loc] = add(a, b);
-      break;
+        memory[loc] = add(a, b);
+        break;
       case '2':
-      memory[loc] = multi(a, b);
-      break;
+        memory[loc] = multi(a, b);
+        break;
       case '99':
       default:
-      running = false;
-      break;
+        running = false;
+        break;
     }
 
     index = index + 4;

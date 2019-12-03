@@ -25,16 +25,20 @@ const calcCoords = (wire) => {
 
 const boardA = calcCoords(wireA).map(value => value[0] + ',' + value[1]);
 const boardB = calcCoords(wireB).map(value => value[0] + ',' + value[1]);
-
-const intersects = boardA.filter(value => -1 !== boardB.indexOf(value));
+const intersects = boardA.filter(value => boardB.includes(value));
 intersects.shift();
 
 let manhattanDistance = Infinity;
+let shortestSteps = Infinity;
 
 for (coords of intersects) {
   const xy = coords.split(',').map(value => Math.abs(parseInt(value)));
   const distance = xy[0] + xy[1];
   manhattanDistance = distance < manhattanDistance ? distance : manhattanDistance;
+
+  const steps = boardA.indexOf(coords) + boardB.indexOf(coords);
+  shortestSteps = steps < shortestSteps ? steps : shortestSteps;
 }
 
 console.info('manhattanDistance', manhattanDistance);
+console.info('shortestSteps', shortestSteps);

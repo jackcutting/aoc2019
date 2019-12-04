@@ -3,6 +3,7 @@ const input = fs.readFileSync('./input/day4.txt', 'utf8').trim().split('-').map(
 
 const isValid = (password) => {
   const passString = password.toString();
+  const groups = [];
   let hasDouble = false;
 
   for (let i = 0; i < passString.length; i++) {
@@ -10,8 +11,11 @@ const isValid = (password) => {
       return false;
     }
 
-    if (parseInt(passString[i]) === parseInt(passString[i+1])) {
-      hasDouble = true;
+    if (passString[i] === passString[i+1]) {
+      if (!((passString[i] === passString[i+2]) || (passString[i] === passString[i-1]))) {
+        groups.push(passString[i]+passString[i]);
+        hasDouble = true;
+      }
     }
   }
 

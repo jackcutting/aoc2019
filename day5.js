@@ -1,5 +1,4 @@
 const fs = require('fs');
-const readline = require('readline');
 const input = fs.readFileSync('./input/day5.txt', 'utf8').trim().split(',');
 const systemId = '5';
 

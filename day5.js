@@ -1,6 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 const input = fs.readFileSync('./input/day5.txt', 'utf8').trim().split(',');
+const systemId = '5';
 
 const add = (a, b) => {
   return (a + b).toString();
@@ -28,21 +29,12 @@ const run = () => {
   let answer = '';
 
   while (running) {
-    let instruction = memory[index];
+    let instruction = memory[index].padStart(5, '0');
     let loc = memory[index + 3];
-    let op = Math.abs(instruction);
-    let modeA = '0';
-    let modeB = '0';
-    let modeC = '0';
-
-    if (instruction.length > 2) {
-      instruction = instruction.padStart(5, '0');
-      op = Math.abs(instruction.substring((instruction.length - 2)));
-      modeC = instruction.substring((instruction.length - 3), (instruction.length - 2));
-      modeB = instruction.substring((instruction.length - 4), (instruction.length - 3));
-      modeA = instruction.substring((instruction.length - 5), (instruction.length - 4));
-    }
-
+    const op = Math.abs(instruction.substring((instruction.length - 2)));
+    const modeC = instruction.substring((instruction.length - 3), (instruction.length - 2));
+    const modeB = instruction.substring((instruction.length - 4), (instruction.length - 3));
+    const modeA = instruction.substring((instruction.length - 5), (instruction.length - 4));
     const c = getParam(memory, (index + 1), modeC);
     const b = getParam(memory, (index + 2), modeB);
     const a = getParam(memory, (index + 3), modeA);
@@ -58,12 +50,40 @@ const run = () => {
         break;
       case 3:
         loc = memory[index + 1];
-        memory[loc] = '1';
+        memory[loc] = systemId;
         paramLength = 2;
         break;
       case 4:
         answer = answer + c;
         paramLength = 2;
+        break;
+      case 5:
+        paramLength = 3;
+        if (c !== 0) {
+          index = b;
+          paramLength = 0;
+        }
+        break;
+      case 6:
+        paramLength = 3;
+        if (c === 0) {
+          index = b;
+          paramLength = 0;
+        }
+        break;
+      case 7:
+        if (c < b) {
+          memory[loc] = '1';
+        } else {
+          memory[loc] = '0';
+        }
+        break;
+      case 8:
+        if (c === b) {
+          memory[loc] = '1';
+        } else {
+          memory[loc] = '0';
+        }
         break;
       case 99:
       default:
